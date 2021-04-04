@@ -227,10 +227,11 @@ int main (int argc, char **argv)
 
 			UCHK(libusb_release_interface(dev_handle, m_interface));
 			UCHK(libusb_attach_kernel_driver(dev_handle, m_interface));
+			
+			libusb_close(dev_handle);
 		}
 	}
 
-	libusb_close(dev_handle);
 	libusb_exit(ctx);
 
 	if (!controller_found){
